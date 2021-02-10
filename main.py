@@ -23,12 +23,17 @@ async def search(ctx, query):
         )
 
         await ctx.send(embed=embed)
-
+        
 @bot.command()
-async def cauldron(ctx, msg):
+async def cauldron(ctx, *, msg = ""):
     if (msg == ""):
-            await msg.channel.send(", ".join(foods))
-            return
+        allMaeds = ""
+        for mead in meads:
+            if (allMaeds != ""):
+                allMaeds = allMaeds + ", "
+            allMaeds = allMaeds + mead.name
+        await ctx.send(allMaeds)
+        return;        
 
     searchedMead = next((mead for mead in meads if mead.name.lower().find(msg.lower()) != -1), "")
     if (searchedMead != ""):
@@ -38,6 +43,6 @@ async def cauldron(ctx, msg):
             embedVar.add_field(name="[" + searchedMeadingredient.amount + "] " + ingredient.name, value=ingredient.found, inline=False)            
         await ctx.send(embed=embedVar)
     else:
-        await ctx.send('Kunde inte hitta det du sökte')
+        await ctx.send('Not found')
 
 bot.run(config('TOKEN'))
