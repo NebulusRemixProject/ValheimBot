@@ -18,8 +18,8 @@ pip install -r requirements.txt
 
 ## Run
 ```
+echo TOKEN=<BOT_TOKEN> >> .env
 pip install -r requirements.txt
-export TOKEN=<BOT_TOKEN>
 python main.py
 ```
 

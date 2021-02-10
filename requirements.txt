@@ -1,2 +1,4 @@
 discord
-decouple
+python-decouple
+bs4
+requests
