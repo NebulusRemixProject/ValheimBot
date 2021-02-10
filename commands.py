@@ -3,7 +3,7 @@ from decouple import config
 from discord.ext import commands
 from modules.wikisearch import get_link
 
-bot = commands.Bot(command_prefix='>', description='I will help with Valheim')
+bot = commands.Bot(command_prefix=config('CMD_PREFIX'), description='I will help with Valheim')
 
 @bot.event
 async def on_ready():
