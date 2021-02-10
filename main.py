@@ -4,7 +4,6 @@ from discord.ext import commands
 from modules.wikisearch import get_link
 from modules.library import *
 
-
 bot = commands.Bot(command_prefix=config('CMD_PREFIX'), description='I will help with Valheim')
 
 @bot.event
@@ -33,14 +32,10 @@ async def cauldron(ctx, msg):
 
     searchedMead = next((mead for mead in meads if mead.name.lower().find(msg.lower()) != -1), "")
     if (searchedMead != ""):
-        embedVar = discord.Embed(title=searchedMead.name, description=searchedMead.description, color=0x00ff00)        
+        embedVar = discord.Embed(title=searchedMead.name, description=searchedMead.description, color=0x00ff00)    
         for searchedMeadingredient in searchedMead.ingredients:
-            if (searchedMeadingredient.itemType == ItemType.Food):
-                ingredient = next(food for food in foods if food.name == searchedMeadingredient.name)
-                embedVar.add_field(name="[" + searchedMeadingredient.amount + "] " + ingredient.name, value=ingredient.found, inline=True)
-            if (searchedMeadingredient.itemType == ItemType.Ingredient):
-                ingredient = next(ingredient for ingredient in ingredients if ingredient.name == searchedMeadingredient.name)
-                embedVar.add_field(name="[" + searchedMeadingredient.amount + "] " + ingredient.name, value=ingredient.found, inline=True)
+            ingredient = next(ingredient for ingredient in ingredients if ingredient.name == searchedMeadingredient.name)
+            embedVar.add_field(name="[" + searchedMeadingredient.amount + "] " + ingredient.name, value=ingredient.found, inline=False)            
         await ctx.send(embed=embedVar)
     else:
         await ctx.send('Kunde inte hitta det du sökte')

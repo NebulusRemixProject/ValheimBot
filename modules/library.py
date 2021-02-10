@@ -1,10 +1,5 @@
 from enum import Enum
 
-class ItemType(Enum):
-    Food = 1,
-    Ingredient = 2
-    Mob = 3
-
 class Food:
   def __init__(self, name, health, healing, stamina, duration, found):
     self.name = name
@@ -31,8 +26,7 @@ class Mob:
     self.found = found
 
 class MeadIngredient:
-  def __init__(self, itemType, name, amount):
-    self.itemType = itemType
+  def __init__(self, name, amount):
     self.name = name
     self.amount = amount
 
@@ -52,7 +46,13 @@ ingredients = [
     Ingredient("Thistle", "A faintly glowing blue plant, typically found within the swamp and black forest."),
     Ingredient("Greydwarf eye", "Drops from Greydwarfs, found in Black Forest"),
     Ingredient("Neck tail", "Dropped by Neck, found in Meadows"),
-    Ingredient("Coal", "Dropped by Surtlings, found in the Swamp")   
+    Ingredient("Coal", "Dropped by Surtlings, found in the Swamp"), 
+    Ingredient("Raspberry", "Found in Meadows"), 
+    Ingredient("Blueberry", "Found in Black Forest"), 
+    Ingredient("Queens Jam", "Crafted within a Cauldron"), 
+    Ingredient("Cooked meat", "By cooking raw meat in Cooking station"), 
+    Ingredient("Mushroom", "Found in Meadows and Black Forest"), 
+    Ingredient("Yellow Mushroom", "Found in crypt and dungeons within Black Forest and Swamp")
 ]
 
 mobs = [
@@ -62,41 +62,35 @@ mobs = [
 
 meads = [
     Mead("Mead base: Medium healing", 
-         "To get the potion you have to ferment your mead base in a fermenter, this takes a while.\n" +
-         "You get 6 potions out of 1 mead base.\n" +
-         "A potion made with the Fermenter from a Mead base: Medium healing. It restores 75 health over 120 seconds.\n" +
-         "Upon consumption a 2min buff is applied preventing consumption of another Medium Healing Mead and increasing the rate of health regeneration.\n",
+         "Restores 7.5 health per second over the course of 30 seconds.",
         [
-        MeadIngredient(ItemType.Ingredient, "Honey", "10"),
-        MeadIngredient(ItemType.Ingredient, "Bloodbag", "4"),
-        MeadIngredient(ItemType.Food, "Raspberry", "10"),
-        MeadIngredient(ItemType.Ingredient, "Dandelion", "1")
+        MeadIngredient("Honey", "10"),
+        MeadIngredient("Bloodbag", "4"),
+        MeadIngredient("Raspberry", "10"),
+        MeadIngredient("Dandelion", "1")
     ]),
     Mead("Mead base: Frost resistance", 
-         "Fortifies you against frost, 10 Minutes (600 Seconds)\n" +
-         "You get 6 potions out of 1 mead base.",
+         "Fortifies you against frost, 10 Minutes (600 Seconds)",
         [
-        MeadIngredient(ItemType.Ingredient, "Honey", "10"),
-        MeadIngredient(ItemType.Ingredient, "Greydwarf eye", "1"),
-        MeadIngredient(ItemType.Ingredient, "Bloodbag", "2"),
-        MeadIngredient(ItemType.Ingredient, "Thistle", "5")
+        MeadIngredient("Honey", "10"),
+        MeadIngredient("Greydwarf eye", "1"),
+        MeadIngredient("Bloodbag", "2"),
+        MeadIngredient("Thistle", "5")
     ]),
     Mead("Mead Base: Minor Healing", 
-         "To get the potion you have to ferment your mead base in a fermenter, this takes a while.\n" +
-         "You get 6 potions out of 1 mead base.",
-        [
-        MeadIngredient(ItemType.Ingredient, "Honey", "10"),
-        MeadIngredient(ItemType.Food, "Blueberries", "5"),
-        MeadIngredient(ItemType.Food, "Raspberry", "10"),
-        MeadIngredient(ItemType.Ingredient, "Dandelion", "1")
+         "Restores 3.3 health per second over the course of 30 seconds.",
+      [
+        MeadIngredient("Honey", "10"),
+        MeadIngredient("Blueberries", "5"),
+        MeadIngredient("Raspberry", "10"),
+        MeadIngredient("Dandelion", "1")
     ]),    
     Mead("Mead base: Poison resistance", 
-         "Fortifies you against Poison, 10 Minutes (600 Seconds)\n" +
-         "You get 6 potions out of 1 mead base.",
-        [
-        MeadIngredient(ItemType.Ingredient, "Honey", "10"),
-        MeadIngredient(ItemType.Ingredient, "Neck tail", "1"),
-        MeadIngredient(ItemType.Ingredient, "Coal", "10"),
-        MeadIngredient(ItemType.Ingredient, "Thistle", "5")
+         "Fortifies you against Poison, 10 Minutes (600 Seconds)",
+     [
+        MeadIngredient("Honey", "10"),
+        MeadIngredient("Neck tail", "1"),
+        MeadIngredient("Coal", "10"),
+        MeadIngredient("Thistle", "5")
     ])
 ]
