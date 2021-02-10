@@ -21,8 +21,9 @@ class Ingredient:
     self.found = found
 
 class Mead:
-  def __init__(self, name, ingredients):
+  def __init__(self, name, description, ingredients):
     self.name = name
+    self.description = description
     self.ingredients = ingredients
 
 class MeadIngredient:
@@ -47,7 +48,10 @@ ingredients = [
 ]
 
 meads = [
-    Mead("medium healing", [
+    Mead("Mead base: Medium healing", 
+         "To get the potion you have to ferment your mead base in a fermenter, this takes a while.\n" +
+         "You get 6 potions out of 1 mead base.",
+        [
         MeadIngredient(ItemType.Ingredient, "Honey", "10"),
         MeadIngredient(ItemType.Ingredient, "Bloodbag", "4"),
         MeadIngredient(ItemType.Food, "Raspberry", "10"),
@@ -75,9 +79,9 @@ async def get_good(msg):
         await msg.channel.send(", ".join(foods))
         return
 
-    searchedMead = next((mead for mead in meads if mead.name.startswith(msg.content[10:len(msg.content)])), "")
+    searchedMead = next((mead for mead in meads if mead.name.lower().find(msg.content[10:len(msg.content)].lower()) != -1), "")
     if (searchedMead != ""):
-        embedVar = discord.Embed(title=searchedMead.name, description="Desc", color=0x00ff00)        
+        embedVar = discord.Embed(title=searchedMead.name, description=searchedMead.description, color=0x00ff00)        
         for searchedMeadingredient in searchedMead.ingredients:
             if (searchedMeadingredient.itemType == ItemType.Food):
                 ingredient = next(food for food in foods if food.name == searchedMeadingredient.name)
