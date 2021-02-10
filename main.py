@@ -1,39 +1,48 @@
 import discord
 from decouple import config
+from discord.ext import commands
+from modules.wikisearch import get_link
 from modules.library import *
 
-client = discord.Client()
 
-@client.event
+bot = commands.Bot(command_prefix=config('CMD_PREFIX'), description='I will help with Valheim')
+
+@bot.event
 async def on_ready():
-    print('Logged in as {0.user}'.format(client))
+    await bot.change_presence(activity=discord.Streaming(name="Valheim", url="http://www.twitch.tv/"))
+    print('My body is ready')
 
-@client.event
-async def on_message(msg):
-    if msg.author == client.user:
-        return
+@bot.command()
+async def search(ctx, query):
+    (link_title, link_url) = get_link(query)
+    if link_title == None:
+        await ctx.send('Not found')
+    else:
+        embed = discord.Embed(
+            title=link_title,
+            description=link_url
+        )
 
-    if msg.content.startswith('!cauldron '):
-        await get_good(msg)
-       
+        await ctx.send(embed=embed)
 
-async def get_good(msg):
-    if (msg.content[10:len(msg.content)] == ""):
-        await msg.channel.send(", ".join(foods))
-        return
+@bot.command()
+async def cauldron(ctx, msg):
+    if (msg == ""):
+            await msg.channel.send(", ".join(foods))
+            return
 
-    searchedMead = next((mead for mead in meads if mead.name.lower().find(msg.content[10:len(msg.content)].lower()) != -1), "")
+    searchedMead = next((mead for mead in meads if mead.name.lower().find(msg.lower()) != -1), "")
     if (searchedMead != ""):
         embedVar = discord.Embed(title=searchedMead.name, description=searchedMead.description, color=0x00ff00)        
         for searchedMeadingredient in searchedMead.ingredients:
             if (searchedMeadingredient.itemType == ItemType.Food):
                 ingredient = next(food for food in foods if food.name == searchedMeadingredient.name)
-                embedVar.add_field(name="[" + searchedMeadingredient.amount + "] " + ingredient.name, value=ingredient.found, inline=False)
+                embedVar.add_field(name="[" + searchedMeadingredient.amount + "] " + ingredient.name, value=ingredient.found, inline=True)
             if (searchedMeadingredient.itemType == ItemType.Ingredient):
                 ingredient = next(ingredient for ingredient in ingredients if ingredient.name == searchedMeadingredient.name)
-                embedVar.add_field(name="[" + searchedMeadingredient.amount + "] " + ingredient.name, value=ingredient.found, inline=False)
-        await msg.channel.send(embed=embedVar)
+                embedVar.add_field(name="[" + searchedMeadingredient.amount + "] " + ingredient.name, value=ingredient.found, inline=True)
+        await ctx.send(embed=embedVar)
     else:
-        await msg.channel.send('Kunde inte hitta det du sökte')
-    
-client.run(config('TOKEN'))
+        await ctx.send('Kunde inte hitta det du sökte')
+
+bot.run(config('TOKEN'))
