@@ -25,6 +25,13 @@ async def search(ctx, query):
         await ctx.send(embed=embed)
         
 @bot.command()
+async def comfort(ctx, *, msg = ""):
+    embedVar = discord.Embed(title="Comfort", description="Max comfort is ?", color=0x00ff00)    
+    for furniture in furnitures:
+        embedVar.add_field(name=furniture.name, value=furniture.comfort, inline=True)    
+    await ctx.send(embed=embedVar)
+
+@bot.command()
 async def cauldron(ctx, *, msg = ""):
     if (msg == ""):
         allMaeds = ""
