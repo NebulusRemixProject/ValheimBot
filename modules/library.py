@@ -30,6 +30,11 @@ class MeadIngredient:
     self.name = name
     self.amount = amount
 
+class Furniture:
+  def __init__(self, name, comfort):
+    self.name = name    
+    self.comfort = comfort
+
 foods = [
     Food("Raspberry", 10, 1, 20, 600, "Found in Meadows"),
     Food("Blueberry", 15, 1, 20, 600, "Found in Black Forest"),
@@ -52,12 +57,34 @@ ingredients = [
     Ingredient("Queens Jam", "Crafted within a Cauldron"), 
     Ingredient("Cooked meat", "By cooking raw meat in Cooking station"), 
     Ingredient("Mushroom", "Found in Meadows and Black Forest"), 
-    Ingredient("Yellow Mushroom", "Found in crypt and dungeons within Black Forest and Swamp")
+    Ingredient("Yellow Mushroom", "Found in crypt and dungeons within Black Forest and Swamp"),
+
+    #Furniture
+    Ingredient("Dragonbed", ""),
+    Ingredient("Lox rug", ""),
+    Ingredient("Wolf rug", ""),
+    Ingredient("Deer rug", ""),
+    Ingredient("Chair", ""),
+    Ingredient("Raventhrone", ""),
+    Ingredient("Banner", ""),
+    Ingredient("Hanging Brazier", ""),
 ]
 
 mobs = [
     Mob("Greyling", "Greylings are only found in the Meadows biome."),
     Mob("Greydwarf", "Greydwarfs spawn primarily in the Black Forest, but can spawn in other biomes during events")
+]
+
+furnitures = [
+    Furniture("Nearby fire", "Seems to give 3"),
+    Furniture("Dragonbed", "1 or 2"),
+    Furniture("Lox rug", "1"),
+    Furniture("Wolf rug", "1"),
+    Furniture("Deer rug", "3 (The rugs stack, so you can get 5 total from all 3 in the same area)"),
+    Furniture("Chair", "1"),
+    Furniture("Raventhrone", "2 (The chairs don't stack)"),
+    Furniture("Banner", "1"),
+    Furniture("Hanging Brazier", "3"),
 ]
 
 meads = [
