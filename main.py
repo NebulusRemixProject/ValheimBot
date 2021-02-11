@@ -23,7 +23,15 @@ async def search(ctx, query):
         )
 
         await ctx.send(embed=embed)
-        
+
+@bot.command()
+async def helpme(ctx, query=None):
+    if query is None:
+        embed = bot_help()
+    else:
+        embed = bot_help(query)
+    await ctx.send(embed=embed)
+
 @bot.command()
 async def comfort(ctx, *, msg = ""):
     embedVar = discord.Embed(title="Comfort", description="Max comfort is ?", color=0x00ff00)    
