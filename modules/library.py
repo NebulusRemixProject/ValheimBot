@@ -58,7 +58,10 @@ ingredients = [
     Ingredient("Cooked meat", "By cooking raw meat in Cooking station"), 
     Ingredient("Mushroom", "Found in Meadows and Black Forest"), 
     Ingredient("Yellow Mushroom", "Found in crypt and dungeons within Black Forest and Swamp"),
-
+    Ingredient("Carrot", "Harvested from carrot seeds"),
+    Ingredient("Raw meat", "Looted from deers and boars"),
+    Ingredient("Entrails", "Looted from draugs"),
+ 
     #Furniture
     Ingredient("Dragonbed", ""),
     Ingredient("Lox rug", ""),
@@ -119,5 +122,39 @@ meads = [
         MeadIngredient("Neck tail", "1"),
         MeadIngredient("Coal", "10"),
         MeadIngredient("Thistle", "5")
-    ])
+    ]),    
+    Mead("Carrot soup", 
+         "A warm tasty soup made of mostly carrots",
+     [
+        MeadIngredient("Mushroom", "1"),
+        MeadIngredient("Carrot", "3")
+    ]),
+    Mead("Mead base: Minor stamina", 
+         "",
+     [
+        MeadIngredient("Honey", "10"),
+        MeadIngredient("Raspberry", "10"),
+        MeadIngredient("Yellow Mushroom", "10")
+    ]), 
+    Mead("Mead base: Tasty", 
+         "",
+     [
+        MeadIngredient("Honey", "10"),
+        MeadIngredient("Raspberry", "10"),
+        MeadIngredient("Blueberry", "5")
+    ]), 
+    Mead("Queens jam", 
+         "You get 4",
+     [
+        MeadIngredient("Raspberry", "8"),
+        MeadIngredient("Blueberry", "8")
+    ]), 
+    Mead("Sausages", 
+         "You get 4",
+     [
+        MeadIngredient("Entrails", "2"),
+        MeadIngredient("Raw meat", "1"),
+        MeadIngredient("Thistle", "4")
+
+    ]), 
 ]

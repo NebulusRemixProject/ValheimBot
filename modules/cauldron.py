@@ -23,7 +23,7 @@ def cauldron(query=None):
         for searchedMeadingredient in searchedMead.ingredients:
             ingredient = next(ingredient for ingredient in ingredients if ingredient.name == searchedMeadingredient.name)
             #embedVar = embedVar + "[" + searchedMeadingredient.amount + "] " + ingredient.name + ". " + ingredient.found + "\n" 
-            embedVar = "{0} [{1:>2}] {2:<13}  {3}\n".format(embedVar, searchedMeadingredient.amount, ingredient.name, ingredient.found) 
+            embedVar = "{0} [{1:>2}] {2:<18} {3}\n".format(embedVar, searchedMeadingredient.amount, ingredient.name, ingredient.found) 
         embedVar = embedVar + "```"
         return embedVar
     else:
