@@ -12,7 +12,7 @@ async def on_ready():
     print('My body is ready')
 
 @bot.command()
-async def search(ctx, query):
+async def search(ctx, *, query):
     (link_title, link_url) = get_link(query)
     if link_title == None:
         await ctx.send('Not found')
