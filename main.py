@@ -2,7 +2,8 @@ import discord
 from decouple import config
 from discord.ext import commands
 from modules.wikisearch import get_link
-from modules.library import *
+from modules.cauldron import cauldron
+from modules.comfort import comfort
 
 bot = commands.Bot(command_prefix=config('CMD_PREFIX'), description='I will help with Valheim')
 
@@ -32,37 +33,22 @@ async def helpme(ctx, query=None):
         embed = bot_help(query)
     await ctx.send(embed=embed)
 
-@bot.command()
-async def comfort(ctx, *, msg = ""):
-    embedVar = discord.Embed(title="Comfort", description="Max comfort is ?", color=0x00ff00)    
-    for furniture in furnitures:
-        embedVar.add_field(name=furniture.name, value=furniture.comfort, inline=True)    
-    await ctx.send(embed=embedVar)
+@bot.command(
+    name="comfort", 
+    brief="", #shown in ?help
+    help="", 
+    description="" #shown in ?help <command>
+)
+async def command_comfort(ctx, *, query=None):
+    await ctx.send(comfort(query))
 
 @bot.command(
     name="cauldron", 
     brief="Returns a list of all items that can be crafted in the cauldron", #shown in ?help
-    help="Test3", 
+    #help="Test3", 
     description="Returns a list of all items that can be crafted in the cauldron" #shown in ?help <command>
 )
-async def command_cauldron(ctx, *, msg = None):
-    if query is None:
-        allMaeds = ""
-        for mead in meads:
-            if (allMaeds != ""):
-                allMaeds = allMaeds + ", "
-            allMaeds = allMaeds + mead.name
-        await ctx.send(allMaeds)
-        return;        
-
-    searchedMead = next((mead for mead in meads if mead.name.lower().find(msg.lower()) != -1), "")
-    if (searchedMead != ""):
-        embedVar = discord.Embed(title=searchedMead.name, description=searchedMead.description, color=0x00ff00)    
-        for searchedMeadingredient in searchedMead.ingredients:
-            ingredient = next(ingredient for ingredient in ingredients if ingredient.name == searchedMeadingredient.name)
-            embedVar.add_field(name="[" + searchedMeadingredient.amount + "] " + ingredient.name, value=ingredient.found, inline=False)            
-        await ctx.send(embed=embedVar)
-    else:
-        await ctx.send('Not found')
+async def command_cauldron(ctx, *, query = None):
+    await ctx.send(cauldron(query))
 
 bot.run(config('TOKEN'))
