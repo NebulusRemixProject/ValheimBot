@@ -39,9 +39,14 @@ async def comfort(ctx, *, msg = ""):
         embedVar.add_field(name=furniture.name, value=furniture.comfort, inline=True)    
     await ctx.send(embed=embedVar)
 
-@bot.command()
-async def cauldron(ctx, *, msg = ""):
-    if (msg == ""):
+@bot.command(
+    name="cauldron", 
+    brief="Returns a list of all items that can be crafted in the cauldron", #shown in ?help
+    help="Test3", 
+    description="Returns a list of all items that can be crafted in the cauldron" #shown in ?help <command>
+)
+async def command_cauldron(ctx, *, msg = None):
+    if query is None:
         allMaeds = ""
         for mead in meads:
             if (allMaeds != ""):
