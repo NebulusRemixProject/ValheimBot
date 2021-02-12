@@ -1,7 +1,7 @@
 FROM python:3.7-alpine 
 
 RUN pip install --upgrade pip
-MULTIDICT_NO_EXTENSIONS=1 pip install multidict
+RUN apk --no-cache add gcc musl-dev
 
 RUN adduser -D -h /app bot
 USER bot
