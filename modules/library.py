@@ -52,16 +52,36 @@ ingredients = [
     Ingredient("Greydwarf eye", "Drops from Greydwarfs, found in Black Forest"),
     Ingredient("Neck tail", "Dropped by Neck, found in Meadows"),
     Ingredient("Coal", "Dropped by Surtlings, found in the Swamp"), 
+    
+    Ingredient("Barley flour", "Processed by barley"), 
+    
+    #Berries
     Ingredient("Raspberry", "Found in Meadows"), 
     Ingredient("Blueberry", "Found in Black Forest"), 
-    Ingredient("Queens Jam", "Crafted within a Cauldron"), 
-    Ingredient("Cooked meat", "By cooking raw meat in Cooking station"), 
+    Ingredient("Cloudberries", "Found in Plains"), 
+
+    #Mushrooms
     Ingredient("Mushroom", "Found in Meadows and Black Forest"), 
     Ingredient("Yellow Mushroom", "Found in crypt and dungeons within Black Forest and Swamp"),
-    Ingredient("Carrot", "Harvested from carrot seeds"),
+
+    #Harvesting
+    Ingredient("Barley", "Harvested in Plains"), 
+    Ingredient("Carrot", "Harvested in Meadows"),
+    Ingredient("Carrot", "Harvested in Meadows"),
+
+
+    #Raw Food
     Ingredient("Raw meat", "Looted from deers and boars"),
     Ingredient("Entrails", "Looted from draugs"),
- 
+    Ingredient("Serpent meat", "Looted from Serpents"),
+
+ #
+    #Cooked Food
+    Ingredient("Queens Jam", "Crafted within a Cauldron"), 
+    Ingredient("Cooked meat", "By cooking raw meat in Cooking station"),     
+    Ingredient("Cooked Lox Meat", ""),     
+    Ingredient("Cooked serpent meat", "By cooking serpent meat in Cooking station"),
+
     #Furniture
     Ingredient("Dragonbed", ""),
     Ingredient("Lox rug", ""),
@@ -157,4 +177,56 @@ meads = [
         MeadIngredient("Thistle", "4")
 
     ]), 
+    Mead("Mead base: Medium stamina", 
+         "Used in fermenter to craft Medium stamina mead.",
+     [
+        MeadIngredient("Honey", "10"),
+        MeadIngredient("Cloudberries", "10"),
+        MeadIngredient("Yellow mushroom", "10")
+    ]), 
+    Mead("Barley wine base: Fire resistance", 
+         "Used in fermenter to craft Medium stamina mead.",
+     [
+        MeadIngredient("Barley", "10"),
+        MeadIngredient("Cloudberries", "10")
+    ]), 
+    Mead("Turnip stew", 
+         "",
+     [
+        MeadIngredient("Raw meat", "1"),
+        MeadIngredient("Turnip", "3")
+    ]), 
+    Mead("Blood pudding", 
+         "",
+     [
+        MeadIngredient("Thistle", "2"),
+        MeadIngredient("Bloodbag", "2"),
+        MeadIngredient("Barley flour", "4")
+    ]), 
+    Mead("Bread", 
+         "",
+     [
+        MeadIngredient("Barley flour", "10")
+    ]), 
+    Mead("Fish wraps", 
+         "",
+     [
+        MeadIngredient("Barley flour", "4"),
+        MeadIngredient("Cooked fish", "2")        
+    ]), 
+    Mead("Lox meat pie", 
+         "",
+     [
+        MeadIngredient("Barley flour", "4"),
+        MeadIngredient("Cloudberries", "2"),
+        MeadIngredient("Cooked Lox Meat", "2")
+    ]), 
+    Mead("Serpent stew", 
+         "",
+     [
+        MeadIngredient("Mushroom", "1"),
+        MeadIngredient("Cooked serpent meat", "1"),
+        MeadIngredient("Honey", "2")
+    ])
+
 ]
