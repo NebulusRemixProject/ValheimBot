@@ -67,15 +67,13 @@ ingredients = [
     #Harvesting
     Ingredient("Barley", "Harvested in Plains"), 
     Ingredient("Carrot", "Harvested in Meadows"),
-    Ingredient("Carrot", "Harvested in Meadows"),
-
+    Ingredient("Turnip", "Harvested in Meadows"),
 
     #Raw Food
     Ingredient("Raw meat", "Looted from deers and boars"),
     Ingredient("Entrails", "Looted from draugs"),
     Ingredient("Serpent meat", "Looted from Serpents"),
 
- #
     #Cooked Food
     Ingredient("Queens Jam", "Crafted within a Cauldron"), 
     Ingredient("Cooked meat", "By cooking raw meat in Cooking station"),     
